@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<hr>
+<h1>Create Your Notes</h1>
+
+<table>
+    <tr>
+
+        <td>Notes</td>
+        <td>description</td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% for project in projects %}
+    <tr>
+
+        <td>{{project.title}}</td>
+        <td>{{project.description}}</td>
+<!--        <td>{{project.created}}</td>-->
+        <td><a href="{% url 'update-project' project.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
+        <td><a href="{% url 'project' project.id %}">views</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<ul>
+    {% for project in projects %}
+
+<!--    <li>name:<a href="{% url 'project' project.id %}">{{project.title}}</a> -&#45;&#45; {{project.created}}</li>-->
+
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+<!--{% include 'navbar.html' %}-->
